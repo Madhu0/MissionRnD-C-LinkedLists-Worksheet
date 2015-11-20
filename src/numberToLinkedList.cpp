@@ -20,5 +20,23 @@ struct node {
 };
 
 struct node * numberToLinkedList(int N) {
-	return NULL;
+	int i;
+	node *head,*current;
+	if (N < 0)
+		N = N*-1;
+	head = NULL;
+	if (N == 0){
+		head = (node *)malloc(sizeof(node));
+		head->num = 0;
+		head->next = NULL;
+	}
+	while (N){
+		i = N % 10;
+		current = (node *)malloc(sizeof(node));
+		current->num = i;
+		current->next = head;
+		head = current;
+		N = N / 10;
+	}
+	return head;
 }
